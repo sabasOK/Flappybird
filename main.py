@@ -5,9 +5,12 @@ from sprites import Bird, Pipe
 
 def collision_sprite():
     if pygame.sprite.spritecollide(bird.sprite, pipe_group, False):
+        hit_sound.play()
         pipe_group.empty()
+        bird.add(Bird())
         return False
     if bird.sprite.rect.y >= 950:
+        fall_sound.play()
         pipe_group.empty()
         bird.add(Bird())
         return False
@@ -41,11 +44,12 @@ clock = pygame.time.Clock()
 font = pygame.font.Font("game/Pixeltype.ttf", 50)
 game_active = False
 score = 0
+hit_sound = pygame.mixer.Sound("game/audio/hit.wav")
+fall_sound = pygame.mixer.Sound("game/audio/die.wav")
 
 # Groups
 
 pipe_group = pygame.sprite.Group()
-
 bird = pygame.sprite.GroupSingle()
 bird.add(Bird())
 

@@ -3,7 +3,7 @@ from random import randint
 
 
 class Bird(pygame.sprite.Sprite):
-    def __init__(self,):
+    def __init__(self):
         super().__init__()
         image1 = pygame.image.load("game/sprites/yellowbird-upflap.png").convert_alpha()
         image2 = pygame.image.load("game/sprites/yellowbird-midflap.png").convert_alpha()
@@ -13,6 +13,7 @@ class Bird(pygame.sprite.Sprite):
         self.image = pygame.transform.scale2x(self.bird_move[int(self.bird_index)])
         self.rect = self.image.get_rect(midright=(198, 300))
         self.bird_gravity = 0
+        self.jump_sound = pygame.mixer.Sound("game/audio/wing.ogg")
 
     def animation(self):
         key = pygame.key.get_pressed()
@@ -22,12 +23,13 @@ class Bird(pygame.sprite.Sprite):
             self.bird_index += 0.1
             if self.bird_index >= len(self.bird_move):
                 self.bird_index = 2
-            self.image = pygame.transform.scale2x(self.bird_move[int(self.bird_index)])
+        self.image = pygame.transform.scale2x(self.bird_move[int(self.bird_index)])
 
     def bird_input(self):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_SPACE]:
             self.bird_gravity = -10
+            self.jump_sound.play()
 
     def gravity(self):
         self.bird_gravity += 0.6
