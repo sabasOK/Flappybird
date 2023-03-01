@@ -44,6 +44,8 @@ clock = pygame.time.Clock()
 font = pygame.font.Font("game/Pixeltype.ttf", 50)
 game_active = False
 score = 0
+
+# Sound effects
 hit_sound = pygame.mixer.Sound("game/audio/hit.wav")
 fall_sound = pygame.mixer.Sound("game/audio/die.wav")
 
