@@ -5,15 +5,15 @@ from random import randint
 class Bird(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        image1 = pygame.image.load("game/sprites/yellowbird-upflap.png").convert_alpha()
-        image2 = pygame.image.load("game/sprites/yellowbird-midflap.png").convert_alpha()
-        image3 = pygame.image.load("game/sprites/yellowbird-downflap.png").convert_alpha()
+        image1 = pygame.image.load("sprites/yellowbird-upflap.png").convert_alpha()
+        image2 = pygame.image.load("sprites/yellowbird-midflap.png").convert_alpha()
+        image3 = pygame.image.load("sprites/yellowbird-downflap.png").convert_alpha()
         self.bird_move = [image1, image2, image3]
         self.bird_index = 0
         self.image = pygame.transform.scale2x(self.bird_move[int(self.bird_index)])
         self.rect = self.image.get_rect(midright=(198, 300))
         self.bird_gravity = 0
-        self.jump_sound = pygame.mixer.Sound("game/audio/wing.ogg")
+        self.jump_sound = pygame.mixer.Sound("audio/wing.ogg")
 
     def animation(self):
         key = pygame.key.get_pressed()
@@ -47,7 +47,7 @@ class Pipe(pygame.sprite.Sprite):
     def __init__(self, p_type, y_pos1=None):
         super().__init__()
 
-        image = pygame.image.load("game/sprites/pipe-green.png").convert_alpha()
+        image = pygame.image.load("sprites/pipe-green.png").convert_alpha()
 
         if p_type == "pipe":
             self.y_pos = randint(-100, 300)

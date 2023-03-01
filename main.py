@@ -41,13 +41,13 @@ pygame.init()
 screen = pygame.display.set_mode((576, 1024))
 pygame.display.set_caption("FlappyBird")
 clock = pygame.time.Clock()
-font = pygame.font.Font("game/Pixeltype.ttf", 50)
+font = pygame.font.Font("Pixeltype.ttf", 50)
 game_active = False
 score = 0
 
 # Sound effects
-hit_sound = pygame.mixer.Sound("game/audio/hit.wav")
-fall_sound = pygame.mixer.Sound("game/audio/die.wav")
+hit_sound = pygame.mixer.Sound("audio/hit.wav")
+fall_sound = pygame.mixer.Sound("audio/die.wav")
 
 # Groups
 
@@ -56,22 +56,22 @@ bird = pygame.sprite.GroupSingle()
 bird.add(Bird())
 
 # Background
-bg_surf = pygame.image.load("game/sprites/background-night.png").convert()
+bg_surf = pygame.image.load("sprites/background-night.png").convert()
 bg_surf = pygame.transform.scale(bg_surf, (screen.get_width(), screen.get_height()))
 
-ground = pygame.image.load("game/sprites/base.png").convert()
+ground = pygame.image.load("sprites/base.png").convert()
 ground = pygame.transform.scale(ground, (screen.get_width(), ground.get_height()))
 groundx = 0
 
 # Intro screen
-start_surf = pygame.image.load("game/sprites/flappybird.png").convert_alpha()
+start_surf = pygame.image.load("sprites/flappybird.png").convert_alpha()
 start_surf = pygame.transform.rotozoom(start_surf, 0, 2)
 start_rect = start_surf.get_rect(center=(576 / 2, 1024 / 2.2))
 start_text_surf = font.render(f" pres ENTER to start", False, "Black")
 start_text_rect = start_text_surf.get_rect(center=(576 / 2, 1024 / 1.8))
 
 # Game over screen
-game_over_surf = pygame.image.load("game/sprites/gameover.png").convert_alpha()
+game_over_surf = pygame.image.load("sprites/gameover.png").convert_alpha()
 game_over_surf = pygame.transform.rotozoom(game_over_surf, 0, 2)
 game_over_rect = game_over_surf.get_rect(center=(576 / 2, 1024 / 2.2))
 over_text_surf = font.render(f"pres ENTER to restart", False, "Black")
